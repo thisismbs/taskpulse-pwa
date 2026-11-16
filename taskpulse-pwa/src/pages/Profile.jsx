@@ -10,27 +10,31 @@ export default function Profile() {
 
   return (
     <div className="container">
-      <div className="card" style={{ textAlign: 'center', padding: '28px 18px' }}>
+      {/* Kartu Profil Utama */}
+      <div className="card" style={{ textAlign: 'center', padding: '30px 18px', backgroundColor: '#FFFDF0' }}>
         <div
           style={{
-            width: '72px',
-            height: '72px',
-            borderRadius: '36px',
-            backgroundColor: '#0f172a',
-            border: '2px solid #38bdf8',
+            width: '84px',
+            height: '84px',
+            borderRadius: '9999px',
+            backgroundColor: '#FFDA00',
+            border: '3.5px solid #00002D',
+            boxShadow: '3px 4px 0px #00002D',
             margin: '0 auto 16px auto',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '28px',
+            fontSize: '36px',
           }}
         >
-          👤
+          🎓
         </div>
-        <h2 style={{ fontSize: '18px', fontWeight: 'bold', color: '#fff' }}>{profileData.nama}</h2>
-        <p style={{ color: '#38bdf8', fontSize: '14px', marginTop: '4px' }}>NIM: {profileData.nim}</p>
-        <span className="badge" style={{ marginTop: '8px' }}>{profileData.kelompok}</span>
+        <h2 style={{ fontSize: '20px', fontWeight: 900, color: '#00002D' }}>{profileData.nama}</h2>
+        <p style={{ color: '#5400C1', fontSize: '15px', fontWeight: 800, marginTop: '4px' }}>NIM: {profileData.nim}</p>
+        <div style={{ marginTop: '12px' }}>
+          <span className="badge" style={{ backgroundColor: '#DB0F76', color: '#FFF' }}>{profileData.kelompok}</span>
+        </div>
       </div>
-    </div>
+      </div>
   );
 }

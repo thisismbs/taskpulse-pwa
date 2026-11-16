@@ -2,102 +2,163 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
-  background-color: #0f172a;
-  color: #f8fafc;
+  background-color: #5400C1; /* Ungu khas sebagai backdrop luar */
+  background-image: radial-gradient(#7A35F0 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  color: #00002D;
   min-height: 100vh;
 }
 
 .container {
-  max-width: 600px;
+  max-width: 480px;
   margin: 0 auto;
-  padding: 16px 16px 80px 16px;
+  padding: 24px 16px 100px 16px;
+  min-height: 100vh;
+  background-color: #FFFCF3; /* Kanvas utama aplikasi krem bersih */
+  box-shadow: 0 0 40px rgba(0, 0, 45, 0.25);
 }
 
-/* Bottom Navigation */
-.navbar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 64px;
-  background-color: #1e293b;
-  border-top: 1px solid #334155;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  z-index: 50;
-}
-
-.nav-item {
-  color: #94a3b8;
-  text-decoration: none;
-  font-size: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.nav-item.active {
-  color: #38bdf8;
-  font-weight: bold;
-}
-
-/* Card & UI Elements */
+/* Kartu Neo-Brutalisme dengan Hard Shadow */
 .card {
-  background-color: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 12px;
-  padding: 18px;
-  margin-bottom: 16px;
+  background-color: #FFF7CA;
+  border: 3.5px solid #00002D;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 4px 6px 0px #00002D;
+}
+
+.card-purple {
+  background-color: #5400C1;
+  color: #FFFCF3;
+  border: 3.5px solid #270570;
+  box-shadow: 4px 6px 0px #270570;
 }
 
 .title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #38bdf8;
+  font-size: 22px;
+  font-weight: 800;
+  color: #00002D;
   margin-bottom: 12px;
+  letter-spacing: -0.5px;
 }
 
+/* Input & Form */
 .input {
   width: 100%;
-  padding: 10px 14px;
-  background-color: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  color: #fff;
-  margin-bottom: 10px;
+  padding: 12px 14px;
+  background-color: #FFFCF3;
+  border: 2.5px solid #00002D;
+  border-radius: 14px;
+  color: #00002D;
+  font-weight: 600;
+  margin-bottom: 12px;
+  outline: none;
+  transition: all 0.15s ease;
 }
 
+.input:focus {
+  background-color: #FFFFFF;
+  box-shadow: 2px 3px 0px #00002D;
+}
+
+/* Tombol Beraksen */
 .btn {
-  background-color: #38bdf8;
-  color: #0f172a;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-weight: bold;
+  background-color: #FFDA00;
+  color: #00002D;
+  border: 3px solid #00002D;
+  padding: 12px 18px;
+  border-radius: 9999px;
+  font-weight: 800;
+  font-size: 14px;
   cursor: pointer;
   width: 100%;
+  box-shadow: 3px 4px 0px #00002D;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn:active {
+  transform: translate(2px, 3px);
+  box-shadow: 1px 1px 0px #00002D;
+}
+
+.btn-purple {
+  background-color: #5400C1;
+  color: #FFF7CA;
+  border-color: #270570;
+  box-shadow: 3px 4px 0px #270570;
 }
 
 .btn-danger {
-  background-color: #ef4444;
-  color: #fff;
-  padding: 6px 10px;
-  border: none;
-  border-radius: 6px;
+  background-color: #DB0F76;
+  color: #FFFFFF;
+  padding: 6px 12px;
+  border: 2px solid #00002D;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 11px;
   cursor: pointer;
+  box-shadow: 2px 2px 0px #00002D;
 }
 
+.btn-danger:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #00002D;
+}
+
+/* Badges */
 .badge {
   display: inline-block;
-  padding: 4px 8px;
+  padding: 4px 10px;
   font-size: 11px;
-  border-radius: 6px;
-  background-color: #334155;
-  color: #94a3b8;
+  font-weight: 800;
+  border-radius: 9999px;
+  border: 2px solid #00002D;
+  background-color: #FFDF00;
+  color: #00002D;
+}
+
+/* Bottom Navigation Bar Mengambang */
+.navbar {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 440px;
+  height: 64px;
+  background-color: #FFFCF3;
+  border: 3.5px solid #00002D;
+  border-radius: 9999px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 4px 6px 0px #00002D;
+  z-index: 50;
+  padding: 0 10px;
+}
+
+.nav-item {
+  color: #7A5800;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  transition: all 0.15s ease;
+}
+
+.nav-item.active {
+  color: #FFFCF3;
+  background-color: #5400C1;
+  border: 2px solid #270570;
+  box-shadow: 2px 2px 0px #00002D;
 }

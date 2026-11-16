@@ -6,7 +6,6 @@ export default function Tasks({ tasks, setTasks }) {
   const [editingId, setEditingId] = useState(null);
   const [editTitle, setEditTitle] = useState('');
 
-  // CREATE
   const handleAdd = (e) => {
     e.preventDefault();
     if (!title.trim()) return;
@@ -23,14 +22,12 @@ export default function Tasks({ tasks, setTasks }) {
     setTitle('');
   };
 
-  // UPDATE (Toggle Status)
   const handleToggle = (id) => {
     const updated = tasks.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t));
     setTasks(updated);
     localStorage.setItem('taskpulse_data', JSON.stringify(updated));
   };
 
-  // UPDATE (Edit Title)
   const handleSaveEdit = (id) => {
     if (!editTitle.trim()) return;
     const updated = tasks.map((t) => (t.id === id ? { ...t, title: editTitle } : t));
@@ -39,7 +36,6 @@ export default function Tasks({ tasks, setTasks }) {
     setEditingId(null);
   };
 
-  // DELETE
   const handleDelete = (id) => {
     const updated = tasks.filter((t) => t.id !== id);
     setTasks(updated);
@@ -48,13 +44,14 @@ export default function Tasks({ tasks, setTasks }) {
 
   return (
     <div className="container">
+      {/* Form Tambah */}
       <div className="card">
-        <h2 className="title">Tambah Tugas Baru</h2>
+        <h2 className="title">Tambah Tugas Baru ✍️</h2>
         <form onSubmit={handleAdd}>
           <input
             className="input"
             type="text"
-            placeholder="Nama kegiatan atau tugas..."
+            placeholder="Ketik tugas atau rencana..."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -63,17 +60,32 @@ export default function Tasks({ tasks, setTasks }) {
             <option value="Praktikum">Praktikum</option>
             <option value="Pribadi">Pribadi</option>
           </select>
-          <button type="submit" className="btn">Simpan Tugas</button>
+          <button type="submit" className="btn">Simpan Tugas!</button>
         </form>
       </div>
 
-      <h3 style={{ fontSize: '16px', marginBottom: '12px', color: '#94a3b8' }}>Daftar Tugas ({tasks.length})</h3>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px', padding: '0 4px' }}>
+        <h3 style={{ fontSize: '18px', fontWeight: 900, color: '#00002D' }}>Daftar Tugas</h3>
+        <span className="badge">{tasks.length} Catatan</span>
+      </div>
 
       {tasks.length === 0 ? (
-        <p style={{ textAlign: 'center', color: '#64748b', marginTop: '24px' }}>Belum ada tugas tercatat.</p>
+        <div className="card" style={{ textAlign: 'center', backgroundColor: '#FFF5C8', color: '#7A5800' }}>
+          <p style={{ fontWeight: 700 }}>Belum ada tugas. Nikmati waktu luangmu!</p>
+        </div>
       ) : (
         tasks.map((task) => (
-          <div key={task.id} className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div
+            key={task.id}
+            className="card"
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              backgroundColor: task.completed ? '#E9D5FF' : '#FFF7CA',
+              borderStyle: task.completed ? 'dashed' : 'solid',
+            }}
+          >
             <div style={{ flex: 1, marginRight: '10px' }}>
               {editingId === task.id ? (
                 <div style={{ display: 'flex', gap: '6px' }}>
@@ -83,31 +95,47 @@ export default function Tasks({ tasks, setTasks }) {
                     value={editTitle}
                     onChange={(e) => setEditTitle(e.target.value)}
                   />
-                  <button className="btn" style={{ width: 'auto' }} onClick={() => handleSaveEdit(task.id)}>OK</button>
+                  <button className="btn" style={{ width: 'auto', padding: '6px 14px' }} onClick={() => handleSaveEdit(task.id)}>OK</button>
                 </div>
               ) : (
                 <>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <input
                       type="checkbox"
                       checked={task.completed}
                       onChange={() => handleToggle(task.id)}
+                      style={{ width: '18px', height: '18px', accentColor: '#5400C1', cursor: 'pointer' }}
                     />
-                    <span style={{ textDecoration: task.completed ? 'line-through' : 'none', color: task.completed ? '#64748b' : '#fff' }}>
+                    <span
+                      style={{
+                        fontSize: '15px',
+                        fontWeight: 700,
+                        textDecoration: task.completed ? 'line-through' : 'none',
+                        color: task.completed ? '#53065B' : '#00002D',
+                      }}
+                    >
                       {task.title}
                     </span>
                   </div>
-                  <div style={{ marginTop: '6px', display: 'flex', gap: '8px' }}>
-                    <span className="badge">{task.category}</span>
-                    <span style={{ fontSize: '11px', color: '#64748b' }}>{task.createdAt}</span>
+                  <div style={{ marginTop: '8px', display: 'flex', gap: '8px', alignItems: 'center' }}>
+                    <span className="badge" style={{ backgroundColor: '#FFFCF3' }}>{task.category}</span>
+                    <span style={{ fontSize: '11px', color: '#7A5800', fontWeight: 600 }}>{task.createdAt}</span>
                   </div>
                 </>
               )}
             </div>
 
-            <div style={{ display: 'flex', gap: '6px' }}>
+            <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
               <button
-                style={{ background: 'none', border: 'none', color: '#38bdf8', cursor: 'pointer', fontSize: '12px' }}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: '#5400C1',
+                  cursor: 'pointer',
+                  fontSize: '12px',
+                  fontWeight: 800,
+                  textDecoration: 'underline',
+                }}
                 onClick={() => { setEditingId(task.id); setEditTitle(task.title); }}
               >
                 Edit
