@@ -31,22 +31,6 @@ export default function Profile() {
         <p style={{ color: '#38bdf8', fontSize: '14px', marginTop: '4px' }}>NIM: {profileData.nim}</p>
         <span className="badge" style={{ marginTop: '8px' }}>{profileData.kelompok}</span>
       </div>
-
-      <div className="card">
-        <h3 className="title" style={{ fontSize: '16px' }}>Informasi Sistem</h3>
-        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #334155' }}>
-          <span style={{ color: '#94a3b8' }}>Platform</span>
-          <span>Progressive Web App (PWA)</span>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #334155' }}>
-          <span style={{ color: '#94a3b8' }}>Mode Offline</span>
-          <span style={{ color: '#22c55e' }}>Didukung (Cache + LocalStorage)</span>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0' }}>
-          <span style={{ color: '#94a3b8' }}>Instansi</span>
-          <span>Teknik Komputer Undip</span>
-        </div>
-      </div>
     </div>
   );
 }
